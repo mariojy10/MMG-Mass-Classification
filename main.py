@@ -52,8 +52,6 @@ def main(args):
     # load data
     train_csv = data['train']
     val_csv = data['val']
-    # train_dataset, val_dataset, train_sampler, classes = load_data(input_size)
-    # names = list(classes.values())
     train_dataset, val_dataset, train_sampler = load_data_from_csv(train_csv,val_csv,input_size)
 
     #dataloader
