@@ -1,6 +1,6 @@
 # MMG-Mass-Classification
-A minimal image classification PyTorch implementation to classify malignancy of mammogram masses (patches). <br/>
-There will be two classes of malignancy: benign and malignant
+A minimal image classification in PyTorch to classify malignancy of mammogram masses (patch images). <br/>
+There are two classes of malignancy: benign and malignant
 
 ## Dataset
 Patch images were extracted from the following mammogram databases:
@@ -22,7 +22,7 @@ I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Car
 - albumentations
 - matplotlib
 - seaborn
-- skelearn
+- sklearn
 
 ## Usage
 #### Step 1: Run build_dataset.py
@@ -71,11 +71,13 @@ hyp:
 python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --output-dir ./output/
 ```
 ![training](assets/training.png)
+
 #### Step 3.1 Tensorboard
 ```
 tensorboard --logdir=runs/{model_name}_{config_name}
 ```
 ![tensorboard](assets/tensorboard.png)
+
 #### Step 3.2: Resume training
 ```
 python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --resume path/to/checkpoint.pt
@@ -86,7 +88,9 @@ python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --resume path/to/
 python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --eval path/to/model.pt
 ```
 ![eval](assets/eval.png)
-
+<p align="center">
+  <img width="460" height="300" src="assets/confusion-matrix.png">
+</p>
 
 ## Results
 | Model | Augmentation | Accuracy | Precision (macro avg) | Recall (macro avg) | F1-Score (macro avg) | weights | config |
