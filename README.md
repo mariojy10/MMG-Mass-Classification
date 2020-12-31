@@ -40,30 +40,19 @@ This step will generate csv file saved at ./data/
 #### Step 2: Configure base_config.yaml in ./cfg/
 ```
 data:
-  #train: list of csv file
-  train: ['./data/cbis-train.csv','./data/inbreast-train.csv']
-  #val: list of csv file
-  val: ['./data/cbis-val.csv','./data/inbreast-val.csv']
-  #nc (number of classes): int
-  nc: 2
-  #names: list of classes names
-  names: ['benign','malignant']
+  train: ['./data/cbis-train.csv','./data/inbreast-train.csv']  #train: list of csv file
+  val: ['./data/cbis-val.csv','./data/inbreast-val.csv']        #val: list of csv file
+  nc: 2                                                         #nc (number of classes): int
+  names: ['benign','malignant']                                 #names: list of classes names
 
 hyp:
-  #pretrained: boolean
-  pretrained: True
-  #feature_extract: boolean
-  feature_extract: False
-  #batch_size: int
-  batch_size: 16
-  #total_epochs: int
-  total_epochs: 100
-  #lr (learning rate): float
-  lr: 0.001
-  #weight decay (L2 regularization): float
-  weight_decay: 0.0001
-  #momentum: float
-  momentum: 0.9 
+  pretrained: True              #pretrained: boolean              
+  feature_extract: False        #feature_extract: boolean
+  batch_size: 16                #batch_size: int
+  total_epochs: 100             #total_epochs: int
+  lr: 0.001                     #lr (learning rate): float
+  weight_decay: 0.0001          #weight decay (L2 regularization): float
+  momentum: 0.9                 #momentum: float
 ```
 
 #### Step 3: Train
