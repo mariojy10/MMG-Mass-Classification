@@ -24,6 +24,9 @@ I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Car
 - seaborn
 - sklearn
 
+## Tested On
+- Windows 10 (num_workers need to be set to 0)
+
 ## Usage
 #### Step 1: Run build_dataset.py
 ```
