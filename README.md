@@ -40,7 +40,7 @@ python3 --cbis path/to/cbis --inbreast path/to/inbreast --stratify kfold --num-f
 ```
 This step will generate csv file saved at ./data/
 
-#### Step 2: Configure base_config.yaml in ./cfg/
+#### Step 2: Create configuration file (.yaml) and put in ./cfg/
 ```
 data:
   train: ['./data/cbis-train.csv','./data/inbreast-train.csv']  #train: list of csv file
@@ -60,7 +60,7 @@ hyp:
 
 #### Step 3: Train
 ```
-python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --output-dir ./output/
+python3 --cfg path/to/cfg --model {model_name} -j 0 --output-dir ./output/
 ```
 ![training](assets/training.png)
 
@@ -72,12 +72,12 @@ tensorboard --logdir=runs/{model_name}_{config_name}
 
 #### Step 3.2: Resume training
 ```
-python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --resume path/to/checkpoint.pt
+python3 --cfg path/to/cfg --model {model_name} -j 0 --resume path/to/checkpoint.pt
 ```
 
 #### Step 4: Eval
 ```
-python3 --cfg ./cfg/base_config.yaml --model {model_name} -j 0 --eval path/to/model.pt
+python3 --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.pt
 ```
 ![eval](assets/eval.png)
 <p align="center">
