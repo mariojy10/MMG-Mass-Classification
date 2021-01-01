@@ -66,14 +66,14 @@ def initialize_model(model_name, num_classes, feature_extract, freeze_bn=True, u
 
     elif "vgg" in model_name:
         input_size = (224,224)
-        model = torchvision.models.__dict__(model_name)(pretrained=use_pretrained)
+        model = torchvision.models.__dict__[model_name](pretrained=use_pretrained)
         set_params_requires_grad(model, feature_extract)
         num_ftrs = model.classifier[6].in_features
         model.classifier[6] = nn.Linear(num_ftrs, num_classes)
     
     elif "densenet" in model_name:
         input_size = (224,224)
-        model = torchvision.models.__dict__(model_name)(pretrained=use_pretrained)
+        model = torchvision.models.__dict__[model_name](pretrained=use_pretrained)
         set_params_requires_grad(model, feature_extract)
         num_ftrs = model.classifier.in_features
         model.classifier = nn.Linear(num_ftrs, num_classes)
@@ -242,7 +242,7 @@ def classification_report(cm, classes):
     macro_avg_f1 = np.mean(f1_score)
 
     # weighted average where weight is the class frequency
-    weight = TPs + FNs    # total actual) class samples
+    weight = TPs + FNs    # total actual class samples
     weight_avg_precision = np.average(precision_array,weights=weight)
     weight_avg_recall = np.average(recall_array,weights=weight)
     weight_avg_f1 = np.average(f1_score,weights=weight)
