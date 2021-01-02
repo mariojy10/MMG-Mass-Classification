@@ -142,3 +142,6 @@ cython_debug/
 
 # ignore tensorboard logdir
 runs/
+
+# ignore pytorch weights
+.pt
