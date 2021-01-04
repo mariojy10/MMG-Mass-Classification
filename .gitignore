@@ -144,4 +144,4 @@ cython_debug/
 runs/
 
 # ignore pytorch weights
-.pt
+weights/
