@@ -92,4 +92,4 @@ python main.py --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.
 ## Results
 | Model | Augmentation | Accuracy | Precision (macro avg) | Recall (macro avg) | F1-Score (macro avg) | weights | config |
 | :---: | :----------: | :------: | :-------------------: | :----------------: | :------------------: | :-----: | :----: |
-| resnet50 | [tf](cfg/base_transform.py) | 0.76 | 0.77 | 0.77 | 0.76 | - | [cfg](cfg/base_config.yaml) | 
+| resnet50 | [base_transform](cfg/base_transform.py) | 0.76 | 0.77 | 0.77 | 0.76 | - | [cfg](cfg/base_config.yaml) | 
