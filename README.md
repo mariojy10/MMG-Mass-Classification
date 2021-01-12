@@ -1,5 +1,5 @@
 # MMG-Mass-Classification
-A minimal image classification in PyTorch to classify malignancy of mammogram masses (patch images). <br/>
+A minimal image classification using PyTorch and Torchvision models to classify malignancy of mammogram masses (patch images). <br/>
 There are two classes of malignancy: benign and malignant
 
 ## Dataset
@@ -12,6 +12,11 @@ R. S. Lee, F. Gimenez, A. Hoogi, K. K. Miyake, M. Gorovoy, and D. L. Rubin, “D
 ```
 I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Cardoso, “INbreast: Toward a Full-field Digital Mammographic Database,” Acad. Radiol., vol. 19, no. 2, pp. 236–248, 2012, doi: 10.1016/j.acra.2011.09.014.
 ```
+
+<p align="center">
+  <img width="640" height="480" src="assets/stats.png">
+</p>
+
 
 ## Dependencies
 - python3
@@ -81,10 +86,10 @@ python main.py --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.
 ```
 ![eval](assets/eval.png)
 <p align="center">
-  <img width="460" height="300" src="assets/confusion-matrix.png">
+  <img width="640" height="480" src="assets/confusion-matrix.png">
 </p>
 
 ## Results
 | Model | Augmentation | Accuracy | Precision (macro avg) | Recall (macro avg) | F1-Score (macro avg) | weights | config |
 | :---: | :----------: | :------: | :-------------------: | :----------------: | :------------------: | :-----: | :----: |
-| resnet50 | None | 0.76 | 0.77 | 0.77 | 0.76 | - | [cfg](cfg/base_config.yaml) | 
+| resnet50 | [tf](cfg/base_transform.py) | 0.76 | 0.77 | 0.77 | 0.76 | - | [cfg](cfg/base_config.yaml) | 
