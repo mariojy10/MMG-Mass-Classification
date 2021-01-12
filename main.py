@@ -1,15 +1,13 @@
 import sys
 import time
-import yaml
 import datetime
 import argparse
 from pathlib import Path
 
-import cv2
+import yaml
 import numpy as np
 
 import torch
-import torchvision
 from torch import nn
 from torch import optim
 
@@ -18,7 +16,6 @@ from torch.utils.tensorboard import SummaryWriter
 
 from utils.engine import initialize_model, train_one_epoch, validate, evaluate, save_checkpoint
 from utils.dataset import load_data_from_csv
-from tqdm import tqdm
 
 
 def main(args):
