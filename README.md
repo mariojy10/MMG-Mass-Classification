@@ -31,12 +31,12 @@ I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Car
 #### Step 1: Run build_dataset.py
 ```
 #split
-python3 --cbis path/to/cbis --inbreast path/to/inbreast split --train-ratio 0.8
-python3 --cbis path/to/cbis --inbreast path/to/inbreast --stratify split --train-ratio 0.8
+python build_dataset.py --cbis path/to/cbis --inbreast path/to/inbreast split --train-ratio 0.8
+python build_dataset.py --cbis path/to/cbis --inbreast path/to/inbreast --stratify split --train-ratio 0.8
 
 #kfold
-python3 --cbis path/to/cbis --inbreast path/to/inbreast kfold --num-folds 5
-python3 --cbis path/to/cbis --inbreast path/to/inbreast --stratify kfold --num-folds 5
+python build_dataset.py --cbis path/to/cbis --inbreast path/to/inbreast kfold --num-folds 5
+python build_dataset.py --cbis path/to/cbis --inbreast path/to/inbreast --stratify kfold --num-folds 5
 ```
 This step will generate csv file saved at ./data/
 
@@ -60,7 +60,7 @@ hyp:
 
 #### Step 3: Train
 ```
-python3 --cfg path/to/cfg --model {model_name} -j 0 --output-dir ./output/
+python main.py --cfg path/to/cfg --model {model_name} -j 0 --output-dir ./output/
 ```
 ![training](assets/training.png)
 
@@ -72,12 +72,12 @@ tensorboard --logdir=runs/{model_name}_{config_name}
 
 #### Step 3.2: Resume training
 ```
-python3 --cfg path/to/cfg --model {model_name} -j 0 --resume path/to/checkpoint.pt
+python main.py --cfg path/to/cfg --model {model_name} -j 0 --resume path/to/checkpoint.pt
 ```
 
 #### Step 4: Eval
 ```
-python3 --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.pt
+python main.py --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.pt
 ```
 ![eval](assets/eval.png)
 <p align="center">
