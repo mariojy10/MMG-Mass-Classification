@@ -123,7 +123,8 @@ def train_one_epoch(train_loader, model, criterion, optimizer, epoch, device):
 
     pbar = tqdm(enumerate(train_loader), total=len(train_loader))
     for step, (inputs, labels) in pbar:
-        inputs, labels = inputs.to(device), labels.long().to(device)
+        # inputs, labels = inputs.to(device), labels.long().to(device)
+        inputs, labels = inputs.to(device), labels.to(device)
         optimizer.zero_grad()
         
         # forward + compute minibatch loss
@@ -155,8 +156,9 @@ def validate(val_loader, model, criterion, device):
 
     with torch.no_grad():
         for step, (inputs, labels) in enumerate(val_loader):
-            inputs, labels = inputs.to(device), labels.long().to(device)
-            
+            # inputs, labels = inputs.to(device), labels.long().to(device)
+            inputs, labels = inputs.to(device), labels.to(device)
+        
             # forward + compute minibatch loss
             outputs = model(inputs)
             loss = criterion(outputs, labels)
