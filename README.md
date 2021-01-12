@@ -14,7 +14,7 @@ I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Car
 ```
 
 <p align="center">
-  <img width="480" height="320" src="assets/stats.png">
+  <img width="480" height="360" src="assets/stats.png">
 </p>
 
 
