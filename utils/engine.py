@@ -173,7 +173,7 @@ def validate(val_loader, model, criterion, device):
 
 
 class ConfusionMatrix(object):
-
+    """Track confusion matrix from minibatch prediction"""
     def __init__(self, classes:list):
         self.classes = classes
         self.num_classes = len(classes)
@@ -188,31 +188,6 @@ class ConfusionMatrix(object):
 
 
 def classification_report(cm, classes):
-
-    def plot(cm, classes):
-        if isinstance(cm , torch.Tensor):
-            cm = cm.int().numpy()
-
-        df_cm = pd.DataFrame(cm, columns=classes, index=classes)
-        # summing across columns
-        df_cm.loc['Total',:] = df_cm.sum(axis=0)
-        # summing across rows
-        df_cm.loc[:,'Total'] = df_cm.sum(axis=1)
-        df_cm = df_cm.astype(int)
-        # mask for heatmap color
-        cmask = np.ones(df_cm.shape, dtype=bool)
-        cmask[:-1,:-1] = False
-        # plotting
-        fig = plt.figure(figsize=(10,7))
-        sn.heatmap(df_cm, mask=cmask, cmap='Blues',annot=True, fmt="d", cbar=False)
-        sn.heatmap(df_cm, mask=~cmask, cmap='OrRd',annot=True, fmt="d", cbar=False)
-        plt.title('Confusion Matrix')
-        plt.ylabel('Actual')
-        plt.xlabel('Predicted')
-        # fig.savefig('confusion-matrix.png')
-        plt.show()
-        return fig
-
     if isinstance(cm, torch.Tensor):
         cm = cm.numpy()
 
@@ -278,6 +253,30 @@ def classification_report(cm, classes):
     report += row_fmt.format('macro avg',*macro_avg, digits=2, width=width)
     report += row_fmt.format('weighted avg',*weighted_avg, digits=2, width=width)
     report += '-' * (width+1+(10*3)) + '\n'
+
+    def plot(cm, classes):
+        if isinstance(cm , torch.Tensor):
+            cm = cm.int().numpy()
+
+        df_cm = pd.DataFrame(cm, columns=classes, index=classes)
+        # summing across columns
+        df_cm.loc['Total',:] = df_cm.sum(axis=0)
+        # summing across rows
+        df_cm.loc[:,'Total'] = df_cm.sum(axis=1)
+        df_cm = df_cm.astype(int)
+        # mask for heatmap color
+        cmask = np.ones(df_cm.shape, dtype=bool)
+        cmask[:-1,:-1] = False
+        # plotting
+        fig = plt.figure(figsize=(10,7))
+        sn.heatmap(df_cm, mask=cmask, cmap='Blues',annot=True, fmt="d", cbar=False)
+        sn.heatmap(df_cm, mask=~cmask, cmap='OrRd',annot=True, fmt="d", cbar=False)
+        plt.title('Confusion Matrix')
+        plt.ylabel('Actual')
+        plt.xlabel('Predicted')
+        # fig.savefig('confusion-matrix.png')
+        plt.show()
+        return fig
 
     heatmap_fig = plot(cm, classes)
     return report, heatmap_fig

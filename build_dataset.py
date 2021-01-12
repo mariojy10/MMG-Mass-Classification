@@ -72,7 +72,6 @@ def _plotter(ax,data,ax_title):
 
 
 def visualize_stats(args_cbis,args_inbreast,fig_title='Dataset Statistic'):
-    
     cbis_csv = str(Path(args_cbis).joinpath('annotation/cbis-roi.csv'))
     _ , cbis_labels = _process_csv(cbis_csv)
     inbreas_csv = str(Path(args_inbreast).joinpath('annotation/inbreast-roi.csv'))
