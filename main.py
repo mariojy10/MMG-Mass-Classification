@@ -50,14 +50,15 @@ def main(args):
     model.to(device)
         
     # load data
+    print('[INFO] Loading data')
     train_csv = data['train']
     val_csv = data['val']
-    train_dataset, val_dataset, train_sampler = load_data_from_csv(train_csv,val_csv,input_size)
+    train_dataset, val_dataset, train_sampler = load_data_from_csv(train_csv,val_csv,input_size,args.transform)
 
-    #dataloader
+    # dataloader
     batch_size = hyp['batch_size']
-    train_loader = DataLoader(train_dataset,batch_size=batch_size,sampler=train_sampler, num_workers=args.workers)
-    val_loader = DataLoader(val_dataset,batch_size=batch_size,shuffle=False, num_workers=args.workers)
+    train_loader = DataLoader(train_dataset,batch_size=batch_size,sampler=train_sampler,num_workers=args.workers)
+    val_loader = DataLoader(val_dataset,batch_size=batch_size,shuffle=False,num_workers=args.workers)
 
     # criterion + optimizer + scheduler
     learning_rate = hyp['lr']
@@ -150,11 +151,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MMG Mass Classification')
     parser.add_argument('--cfg',type=str,default='./cfg/base_config.yaml',help='config file path')
     parser.add_argument('--model', type=str, default='resnet50', help='model')
+    parser.add_argument('--transform',type=str,default='./cfg/base_transform.py',help='transform config')
     parser.add_argument('-j','--workers', type=int, default=16, metavar='N', help='number of data loading workers (default is 16)')
     parser.add_argument('--output-dir',type=str, default='./weights/', help='path where to save')
     parser.add_argument('--resume',type=str,default='',help='resume from checkpoint (.pt path)')
     parser.add_argument('--start-epoch',type=int, default=0, metavar='N', help='start epoch')
     parser.add_argument('--eval',type=str,help='path to the saved model')
-    
+
     args = parser.parse_args()
     main(args)
