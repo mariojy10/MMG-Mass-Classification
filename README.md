@@ -14,7 +14,7 @@ I. C. Moreira, I. Amaral, I. Domingues, A. Cardoso, M. J. Cardoso, and J. S. Car
 ```
 
 <p align="center">
-  <img width="640" height="480" src="assets/stats.png">
+  <img width="320" height="240" src="assets/stats.png">
 </p>
 
 
@@ -86,7 +86,7 @@ python main.py --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.
 ```
 ![eval](assets/eval.png)
 <p align="center">
-  <img width="640" height="480" src="assets/confusion-matrix.png">
+  <img width="320" height="240" src="assets/confusion-matrix.png">
 </p>
 
 ## Results
