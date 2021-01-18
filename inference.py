@@ -34,7 +34,7 @@ def load_image(image_path,network_dim:list):
     tensor_image = torch.from_numpy(image).float()
     return tensor_image
 
-
+@torch.no_grad()
 def classify(args):
     
     if args.device == 'cuda':
@@ -50,16 +50,15 @@ def classify(args):
     model.to(device)
     model.eval()
 
-    with torch.no_grad():
-        outputs = model(tensor_image)        
-        _,label = torch.max(outputs[0],dim=0)
-        label = label.item()
-        probs = F.softmax(outputs[0],dim=0)
-        confidence = probs[label].item()
-        names = NAMES[label]
+    outputs = model(tensor_image)        
+    _,label = torch.max(outputs[0],dim=0)
+    label = label.item()
+    probs = F.softmax(outputs[0],dim=0)
+    confidence = probs[label].item()
+    names = NAMES[label]
 
-        print(f'[INFO] Input image: {Path(args.image_path).name}')
-        print(f'[INFO] Classified by the model with label {label} as {names} with confidence of {(confidence*100):.2f} %')
+    print(f'[INFO] Input image: {Path(args.image_path).name}')
+    print(f'[INFO] Classified by the model with label {label} as {names} with confidence of {(confidence*100):.2f} %')
 
 
 
