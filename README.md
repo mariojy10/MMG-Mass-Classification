@@ -1,5 +1,5 @@
 # MMG-Mass-Classification
-A minimal image classification using PyTorch and Torchvision models to classify malignancy of mammogram masses (patch images). <br/>
+A minimal image classification using PyTorch and Torchvision models to classify malignancy of mammogram masses (patch images).
 There are two classes of malignancy: benign and malignant
 
 ## Dataset
