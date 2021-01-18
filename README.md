@@ -84,6 +84,12 @@ python main.py --cfg path/to/cfg --model {model_name} -j 0 --resume path/to/chec
 ```
 python main.py --cfg path/to/cfg --model {model_name} -j 0 --eval path/to/model.pt
 ```
+
+#### Step 5: Inference
+```
+python inference.py --model-path path/to/model --image-path path/to/image --network-dim {height} {width}
+```
+
 ![eval](assets/eval.png)
 <p align="center">
   <img width="480" height="320" src="assets/confusion-matrix.png">
