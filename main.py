@@ -72,7 +72,7 @@ def main(args):
     if args.resume:
         print('[INFO] Load checkpoint')
         ckpt = torch.load(args.resume, map_location=device)
-        model.load_state_dict(ckpt['model'])
+        model.load_state_dict(ckpt['model_state_dict'])
         optimizer.load_state_dict(ckpt['optimizer'])
         args.start_epoch = ckpt['epoch'] + 1
         best_acc = ckpt['best_acc'] if 'best_acc' in ckpt else ckpt['acc']
@@ -118,7 +118,8 @@ def main(args):
             checkpoint = {
                 'epoch': epoch,
                 'acc': val_acc,
-                'model': model.state_dict(),
+                'model': model,
+                'model_state_dict': model.state_dict(),
                 'optimizer': optimizer.state_dict()
             }
             filepath = str(Path(args.output_dir).joinpath(f'{model_name}_{config_stem}.pt'))
