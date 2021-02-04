@@ -112,7 +112,7 @@ def main(args):
             is_best = val_acc > best_acc
             if is_best:
                 best_acc = val_acc
-                print('Found new best val_acc: {:6.2f} !\n'.format(best_acc))
+                print('Found new best val_acc: {:6.2f}!\n'.format(best_acc))
 
             # save checkpoint each 10 epochs
             checkpoint = {
